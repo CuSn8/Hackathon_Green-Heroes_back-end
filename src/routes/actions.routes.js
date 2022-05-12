@@ -40,17 +40,17 @@ connection.query(
 //    description: description,
 
 router.post('/', (req, res) => {
-  const { title, author, start_date, street_number, street_name, zip_code, city, type, country } = req.body;
+  const { title, author, start_date, start_hour, street_number, street_name, zip_code, city, type, country, description } = req.body;
   connection.query(
-    'INSERT INTO actions (title, author, start_date, street_number, street_name, zip_code, city, type, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-    [title, author, start_date, street_number, street_name, zip_code, city, type, country],
+    'INSERT INTO actions (title, author, start_date, start_hour, street_number, street_name, zip_code, city, type, country, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+    [title, author, start_date, start_hour, street_number, street_name, zip_code, city, type, country, description],
     (err, result) => {
       if (err) {
         console.error(err);
         res.status(500).send('Error saving the action');
       } else {
         const id = result.insertId;
-        const createdAction = { id, title, author, start_date, street_number, street_name, zip_code, city, type, country };
+        const createdAction = { title, author, start_date, start_hour, street_number, street_name, zip_code, city, type, country, description };
         res.status(201).json(createdAction);
       }
     }
