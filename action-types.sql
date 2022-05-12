@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS `user_profiles` (
+    `id` INT NOT NULL AUTO_INCREMENT,
+    `name` VARCHAR(100),
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8;
