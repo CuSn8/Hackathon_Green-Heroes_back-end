@@ -1,10 +1,15 @@
 const router = require('express').Router();
 const usersRouter = require('./user.routes');
 const animalsRouter = require('./animal.routes');
-const productsRouter = require('./product.routes');
+const actionsRouter = require('./actions.routes');
+const scrapingRouter = require('./scraping.routes');
+
+
 
 router.use('/users', usersRouter);
 router.use ('/animals', animalsRouter);
-router.use('/products', productsRouter);
+router.use ('/actions', actionsRouter);
+router.use ('/scraping', scrapingRouter);
+
 
 module.exports = router;
