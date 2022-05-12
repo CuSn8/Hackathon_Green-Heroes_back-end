@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `user_profiles` (
+CREATE TABLE IF NOT EXISTS `action_types` (
     `id` INT NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(100),
     PRIMARY KEY (`id`)
