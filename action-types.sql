@@ -1,5 +1,0 @@
-CREATE TABLE IF NOT EXISTS `action_types` (
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(100),
-    PRIMARY KEY (`id`)
-) ENGINE = InnoDB DEFAULT CHARSET = utf8;
