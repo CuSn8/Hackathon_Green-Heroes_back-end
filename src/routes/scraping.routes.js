@@ -1,6 +1,7 @@
 const PORT = 8000;
 const connection = require('../db-config');
 const router = require('express').Router();
+
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
@@ -80,3 +81,4 @@ router.get('/', (req,res) => {
 
 
 module.exports = router;
+
