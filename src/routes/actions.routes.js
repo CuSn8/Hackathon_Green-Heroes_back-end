@@ -1,6 +1,28 @@
 const connection = require('../db-config');
 const router = require('express').Router();
 
+router.use(cors({
+    origin: "http://localhost:3000",
+    credentials: true
+  }));
+  
+  router.use(session({
+    secret: "secret",
+    resave: false,
+  saveUninitialized: false,
+  rolling: true,
+  cookie: {
+    httpOnly: false,
+    sameSite: "lax",
+    secure: false
+  }
+  }));
+
+  router.use(function (req, res, next) {
+    req.session.test = "test";
+    next();
+  });
+
 router.get('/', (req, res) => {
     connection.query('SELECT * FROM actions', (err, result) => {
       if (err) {
