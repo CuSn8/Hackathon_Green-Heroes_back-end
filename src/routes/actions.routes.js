@@ -28,14 +28,16 @@ connection.query(
 }); 
 
 // title: eventName,
-// author: organisator,
-// start_date: date,
-// street_number: number,
-// street_name: adress,
-// zip_code: zip,
-// city: city,
-// type: action,
-// country: "France",
+//    author: organisator,
+//    start_date: date,
+//    start_hour: hour,
+//    type: action,
+//    street_number: number,
+//    street_name: adress,
+//    zip_code: zip,
+//    city: city,
+//    country: "France",
+//    description: description,
 
 router.post('/', (req, res) => {
   const { title, author, start_date, street_number, street_name, zip_code, city, type, country } = req.body;

@@ -50,7 +50,7 @@ CREATE TABLE `actions` (
   `title` varchar(100) DEFAULT NULL,
   `description` text,
   `type` varchar(100) DEFAULT NULL,
-  `author` int DEFAULT NULL,
+  `author` varchar(100) DEFAULT NULL,
   `start_date` date DEFAULT NULL,
   `start_hour` time DEFAULT NULL,
   `x_coor` double(8,6) DEFAULT NULL,
