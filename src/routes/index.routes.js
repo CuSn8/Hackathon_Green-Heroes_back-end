@@ -9,7 +9,7 @@ const scrapingRouter = require('./scraping.routes');
 router.use('/users', usersRouter);
 router.use ('/animals', animalsRouter);
 router.use ('/actions', actionsRouter);
-router.use ('/scraping', scrapingRouter);
+router.use ('/news', scrapingRouter);
 
 
 module.exports = router;
