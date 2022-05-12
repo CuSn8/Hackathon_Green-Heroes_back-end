@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
 const actionId = req.params.id;
 connection.query(
-    'SELECT * FROM actiond WHERE id = ?',
+    'SELECT * FROM actions WHERE id = ?',
     [actionId],
     (err, results) => {
     if (err) {
@@ -28,16 +28,16 @@ connection.query(
 }); 
 
 // title: eventName,
-//    author: organisator,
-//    start_date: date,
-//    start_hour: hour,
-//    type: action,
-//    street_number: number,
-//    street_name: adress,
-//    zip_code: zip,
-//    city: city,
-//    country: "France",
-//    description: description,
+// author: organisator,
+// start_date: date,
+// start_hour: hour,
+// type: action,
+// street_number: number,
+// street_name: adress,
+// zip_code: zip,
+// city: city,
+// country: "France",
+// description: description,
 
 router.post('/', (req, res) => {
   const { title, author, start_date, start_hour, street_number, street_name, zip_code, city, type, country, description } = req.body;
@@ -65,7 +65,7 @@ router.put('/:id', (req, res) => {
     .then(([results]) => {
       existingAction = results[0];
       if (!existingAction) return Promise.reject('RECORD_NOT_FOUND');
-      return db.query('UPDATE animal SET ? WHERE id = ?', [req.body, actionId]);
+      return db.query('UPDATE actions SET ? WHERE id = ?', [req.body, actionId]);
     })
     .then(() => {
       res.status(200).json({ ...existingAction, ...req.body });
