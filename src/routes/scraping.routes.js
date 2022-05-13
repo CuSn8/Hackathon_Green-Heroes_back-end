@@ -7,31 +7,10 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 
 const newspapers = [
-  // {
-  //   name: "lacroix",
-  //   address: "https://www.la-croix.com/environnement",
-  //   base: "",
-  // },
-  // {
-  //   name: "lesechos",
-  //   address: "https://www.lesechos.fr/monde/enjeux-internationaux",
-  //   base: "https://www.lesechos.fr",
-  // },
-  // { name: "lefigaro", address: "https://www.lefigaro.fr/sciences", base: "" },
-  // {
-  //   name: "leparisien",
-  //   address: "https://www.leparisien.fr/environnement/",
-  //   base: "",
-  // },
-  // {
-  //   name: "20min",
-  //   address: "https://www.20minutes.fr/planete/",
-  //   base: "https://www.20minutes.fr",
-  // },
   {
     name: "reporterre",
     address: "https://reporterre.net/Climat-18",
-    base: "",
+    base: "https://reporterre.net/",
   },
 ];
 
@@ -48,14 +27,12 @@ newspapers.forEach((newspaper) => {
     ).each(function () {
       const desc = $(this).text();
       const url = $(this).attr("href");
-      // const img = $(this).find("img").attr("src");
       const title = $(this).find("p").text();
 
       articles.push({
         title,
-        url: newspaper.base + url,
-        source: newspaper.address,
-        // img: img,
+        url: url,
+        source: newspaper.base + url,
         desc,
       });
     });
