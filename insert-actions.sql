@@ -1,0 +1,5 @@
+  INSERT INTO `actions`(`title`, `description`, `type`, `author`, `start_date`, `start_hour`, 
+  `x_coor`, `y_coor`, `street_number`, `street_name`, `zip_code`, `city`, `country`) VALUES 
+  ('Nettoyons la place Edith Piaf !', 'Rejoignez-nous pour un grand nettoyage de la place Edith Piaf !', 'Nettoyage', 'Gérard', '2022-06-02', '09:00', 48.864906, 2.405147, 26, 'rue de la Py', 75020, 'Paris', 'France'),
+  ('Donne iPhone 13 Pro Max', 'Traces de doigts à nettoyer', 'Nettoyage', 'Bernard', '2022-06-03', '10:00', 48.870629, 2.3169336, 55, 'Rue du Faubourg Saint-Honoré', 75008, 'Paris', 'France'),
+  ('Atelier réparation électroménager', 'Venez réparer votre électroménager !', 'Réparation', 'Josianne', '2022-06-12', '10:00', 48.868844, 2.4060299, 44, 'Rue Alphonse Penaud', 75020, 'Paris', 'France');
