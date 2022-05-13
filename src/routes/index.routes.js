@@ -3,6 +3,7 @@ const usersRouter = require('./user.routes');
 const actionsRouter = require('./actions.routes');
 const scrapingRouter = require('./scraping.routes');
 const myProfileRouter = require('./myprofile.routes');
+const usersActionsRouter = require('./users-actions.routes');
 const authRouter = require('./auth.routes');
 const cors = require('cors');
 const session = require('express-session');
@@ -36,6 +37,8 @@ router.use ('/actions', actionsRouter);
 router.use ('/news', scrapingRouter);
 router.use('/myprofile', myProfileRouter);
 router.use('/auth', authRouter);
+router.use('/users-actions', usersActionsRouter);
+
 
 
 module.exports = router;
