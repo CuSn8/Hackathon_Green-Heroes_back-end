@@ -124,5 +124,28 @@ connection.query(
 );
 });
 
+router.post('/heroes', function(request, response) {
+	// Capture the input fields
+	let heroes = request.body;
+	console.log(heroes);
+    console.log(request.body);
+    heroes.map((user) => 
+	// Ensure the input fields exists and are not empty
+		connection.query('SELECT * FROM `user_profiles` WHERE id = ?', 
+    [user.user_id], function(error, results, fields) {
+			// If there is an issue with the query, output the error
+			if (error) throw error;
+			// If the account exists
+			if (results.length > 0) {
+        response.send(results)
+			} else {
+				response.send('reject');
+			}			
+			response.end();
+})
+    );
+});
+
+
 
 module.exports = router;
