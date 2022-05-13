@@ -91,6 +91,7 @@ CREATE TABLE `user_profiles` (
   `street_name` varchar(255) DEFAULT NULL,
   `zip_code` int DEFAULT NULL,
   `city` varchar(255) DEFAULT NULL,
+  `country` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -115,3 +116,10 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2022-05-12 16:58:54
+DROP TABLE IF EXISTS `users_actions`;
+CREATE TABLE `users_actions` (
+  `user_id` INT,
+  `action_id` INT
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ALTER TABLE `users_actions` ADD FOREIGN KEY (`user_id`) REFERENCES `user_profiles`(`id`) ON DELETE SET NULL;
+ALTER TABLE `users_actions` ADD FOREIGN KEY (`action_id`) REFERENCES `actions`(`id`) ON DELETE SET NULL;
