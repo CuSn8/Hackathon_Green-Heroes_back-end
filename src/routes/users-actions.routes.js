@@ -65,7 +65,8 @@ router.get('/', (req, res) => {
 // description: description,
 
 router.post('/', (req, res) => {
-  const { user_id, action_id } = req.body;
+  const { action_id } = req.body;
+  const user_id = req.session.authId;
   console.log(req.session);
   connection.query(
     'INSERT INTO users_actions (`user_id`, `action_id`) VALUES (?, ?)',
