@@ -36,21 +36,21 @@ router.get('/', (req, res) => {
     });
   });
 
-// router.get('/:id', (req, res) => {
-// const actionId = req.params.id;
-// connection.query(
-//     'SELECT * FROM actions WHERE id = ?',
-//     [actionId],
-//     (err, results) => {
-//     if (err) {
-//         res.status(500).send('Error retrieving action from database');
-//     } else {
-//         if (results.length) res.json(results[0]);
-//         else res.status(404).send('Action not found');
-//     }
-//     }
-// );
-// }); 
+router.get('/:id', (req, res) => {
+const actionId = req.params.id;
+connection.query(
+    'SELECT * FROM users_actions WHERE action_id = ?',
+    [actionId],
+    (err, results) => {
+    if (err) {
+        res.status(500).send('Error retrieving action from database');
+    } else {
+        if (results.length) res.json(results[0]);
+        else res.status(404).send('Action not found');
+    }
+    }
+);
+}); 
 
 // title: eventName,
 // author: organisator,
