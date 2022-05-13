@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const usersRouter = require('./user.routes');
-const animalsRouter = require('./animal.routes');
 const actionsRouter = require('./actions.routes');
 const scrapingRouter = require('./scraping.routes');
 const myProfileRouter = require('./myprofile.routes');
+const authRouter = require('./auth.routes');
 const cors = require('cors');
 const session = require('express-session');
 
@@ -32,9 +32,10 @@ router.use(function (req, res, next) {
 });
 
 router.use('/users', usersRouter);
-router.use ('/animals', animalsRouter);
 router.use ('/actions', actionsRouter);
 router.use ('/news', scrapingRouter);
 router.use('/myprofile', myProfileRouter);
+router.use('/auth', authRouter);
+
 
 module.exports = router;
