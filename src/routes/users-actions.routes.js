@@ -66,8 +66,9 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   const { user_id, action_id } = req.body;
+  console.log(req.session);
   connection.query(
-    'INSERT INTO actions (`user_id`, `action_id`) VALUES (?, ?)',
+    'INSERT INTO users_actions (`user_id`, `action_id`) VALUES (?, ?)',
     [user_id, action_id],
     (err, result) => {
       if (err) {
