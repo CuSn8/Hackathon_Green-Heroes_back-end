@@ -1,5 +1,30 @@
 const connection = require('../db-config');
 const router = require('express').Router();
+const cors = require('cors');
+const session = require('express-session');
+
+
+router.use(cors({
+    origin: "http://localhost:3000",
+    credentials: true
+  }));
+  
+  router.use(session({
+    secret: "secret",
+    resave: false,
+  saveUninitialized: false,
+  rolling: true,
+  cookie: {
+    httpOnly: false,
+    sameSite: "lax",
+    secure: false
+  }
+  }));
+
+  router.use(function (req, res, next) {
+    req.session.test = "test";
+    next();
+  });
 
 router.get('/', (req, res) => {
     connection.query('SELECT * FROM actions', (err, result) => {
@@ -40,17 +65,17 @@ connection.query(
 // description: description,
 
 router.post('/', (req, res) => {
-  const { title, author, start_date, start_hour, street_number, street_name, zip_code, city, type, country, description } = req.body;
+  const { title, author, start_date, start_hour, street_number, street_name, zip_code, city, type, country, description, x_coor, y_coor } = req.body;
   connection.query(
-    'INSERT INTO actions (title, author, start_date, start_hour, street_number, street_name, zip_code, city, type, country, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-    [title, author, start_date, start_hour, street_number, street_name, zip_code, city, type, country, description],
+    'INSERT INTO actions (title, author, start_date, start_hour, street_number, street_name, zip_code, city, type, country, description, x_coor, y_coor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+    [title, author, start_date, start_hour, street_number, street_name, zip_code, city, type, country, description, x_coor, y_coor],
     (err, result) => {
       if (err) {
         console.error(err);
         res.status(500).send('Error saving the action');
       } else {
         const id = result.insertId;
-        const createdAction = { title, author, start_date, start_hour, street_number, street_name, zip_code, city, type, country, description };
+        const createdAction = { title, author, start_date, start_hour, street_number, street_name, zip_code, city, type, country, description, x_coor, y_coor };
         res.status(201).json(createdAction);
       }
     }
