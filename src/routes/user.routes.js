@@ -54,12 +54,25 @@ connection.query(
 );
 }); 
 
+// const data = {
+//   first_name: firstname,
+//   last_name: lastname,
+//   email: email,
+//   password: password,
+//   list_imageUrl: picture,
+//   street_number: streetNumber,
+//   street_name: streetName,
+//   zip_code: zipCode,
+//   city: city,
+//   country: "France"
+// };
+
 router.post('/', (req, res) => {
-const { first_name, last_name, full_name, title, family, list_imageUrl, email, password } = req.body;
+const { first_name, last_name, email, password, list_imageUrl, street_number, street_name, zip_code, city, country } = req.body;
 console.log(req.body)
 connection.query(
-  'INSERT INTO `user_profiles` (`first_name`, `last_name`, `full_name`, `title`, `family`, `list_imageUrl`, `email`, `password`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-  [first_name, last_name, full_name, title, family, list_imageUrl, email, password],
+  'INSERT INTO `user_profiles` (`first_name`, `last_name`, `email`, `password`, `list_imageUrl`, `street_number`, `street_name`, `zip_code`, `city`, `country`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+  [first_name, last_name, email, password, list_imageUrl, street_number, street_name, zip_code, city, country],
   (err, result) => {
     if (err) {
       console.error(err);
@@ -67,8 +80,8 @@ connection.query(
     } else {
       const id = result.insertId;
       req.session.authId = id
-      const createdAnimal = { id, first_name, last_name, full_name, title, family, list_imageUrl, email, password };
-      res.status(201).json(createdAnimal);
+      const createdUser = { id, first_name, last_name, email, password, list_imageUrl, street_number, street_name, zip_code, city, country };
+      res.status(201).json(createdUser);
     }
   }
 );

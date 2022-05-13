@@ -3,14 +3,16 @@ const usersRouter = require('./user.routes');
 const animalsRouter = require('./animal.routes');
 const actionsRouter = require('./actions.routes');
 const scrapingRouter = require('./scraping.routes');
+const cors = require('cors');
+const session = require('express-session');
+
+
 
 router.use(cors({
     origin: "http://localhost:3000",
     credentials: true
   }));
-  
-  const session = require('express-session');
-  
+    
   router.use(session({
       secret: "secret",
       resave: false,
